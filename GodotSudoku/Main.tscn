@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://images/board.png" type="Texture" id=2]
@@ -29,6 +29,38 @@
 [ext_resource path="res://images/num5_disabled.png" type="Texture" id=27]
 [ext_resource path="res://images/num4_disabled.png" type="Texture" id=28]
 [ext_resource path="res://images/num8_pressed.png" type="Texture" id=29]
+[ext_resource path="res://images/empty.png" type="Texture" id=30]
+[ext_resource path="res://images/numCursor.png" type="Texture" id=31]
+
+[sub_resource type="TileSet" id=1]
+0/name = "empty.png 0"
+0/texture = ExtResource( 30 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 53, 53 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "numCursor.png 1"
+1/texture = ExtResource( 31 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 53, 53 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -57,15 +89,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="board" type="TextureRect" parent="."]
-margin_left = 10.5
-margin_top = 80.0
-margin_right = 489.5
-margin_bottom = 559.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 70.0
+margin_right = 500.0
+margin_bottom = 570.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="board" type="TextureRect" parent="CenterContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 489.0
+margin_bottom = 489.0
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TileMap" type="TileMap" parent="CenterContainer"]
+position = Vector2( 11, 11 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 53, 53 )
+format = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_top = 560.0
