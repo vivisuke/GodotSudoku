@@ -1,10 +1,34 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://images/board.png" type="Texture" id=2]
 [ext_resource path="res://images/num1.png" type="Texture" id=3]
 [ext_resource path="res://images/num2.png" type="Texture" id=4]
 [ext_resource path="res://images/num3.png" type="Texture" id=5]
+[ext_resource path="res://images/num7.png" type="Texture" id=6]
+[ext_resource path="res://images/num9.png" type="Texture" id=7]
+[ext_resource path="res://images/num6.png" type="Texture" id=8]
+[ext_resource path="res://images/num5.png" type="Texture" id=9]
+[ext_resource path="res://images/num8.png" type="Texture" id=10]
+[ext_resource path="res://images/num4.png" type="Texture" id=11]
+[ext_resource path="res://images/num9_disabled.png" type="Texture" id=12]
+[ext_resource path="res://images/num4_pressed.png" type="Texture" id=13]
+[ext_resource path="res://images/num2_disabled.png" type="Texture" id=14]
+[ext_resource path="res://images/num3_disabled.png" type="Texture" id=15]
+[ext_resource path="res://images/num6_disabled.png" type="Texture" id=16]
+[ext_resource path="res://images/num1_pressed.png" type="Texture" id=17]
+[ext_resource path="res://images/num8_disabled.png" type="Texture" id=18]
+[ext_resource path="res://images/num7_disabled.png" type="Texture" id=19]
+[ext_resource path="res://images/num1_disabled.png" type="Texture" id=20]
+[ext_resource path="res://images/num6_pressed.png" type="Texture" id=21]
+[ext_resource path="res://images/num5_pressed.png" type="Texture" id=22]
+[ext_resource path="res://images/num3_pressed.png" type="Texture" id=23]
+[ext_resource path="res://images/num9_pressed.png" type="Texture" id=24]
+[ext_resource path="res://images/num2_pressed.png" type="Texture" id=25]
+[ext_resource path="res://images/num7_pressed.png" type="Texture" id=26]
+[ext_resource path="res://images/num5_disabled.png" type="Texture" id=27]
+[ext_resource path="res://images/num4_disabled.png" type="Texture" id=28]
+[ext_resource path="res://images/num8_pressed.png" type="Texture" id=29]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -58,26 +82,96 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 137.0
 margin_top = 20.0
-margin_right = 363.0
+margin_right = 370.0
 margin_bottom = 220.0
+custom_constants/separation = 20
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 226.0
+[node name="HBoxContainer1" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 233.0
 margin_bottom = 53.0
+custom_constants/separation = 16
+alignment = 1
 
-[node name="numButton1" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="numButton1" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
 margin_right = 67.0
 margin_bottom = 53.0
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 17 )
+texture_disabled = ExtResource( 20 )
 
-[node name="numButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 71.0
-margin_right = 138.0
+[node name="numButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+margin_left = 83.0
+margin_right = 150.0
 margin_bottom = 53.0
 texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 25 )
+texture_disabled = ExtResource( 14 )
 
-[node name="numButton3" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 142.0
-margin_right = 209.0
+[node name="numButton3" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+margin_left = 166.0
+margin_right = 233.0
 margin_bottom = 53.0
 texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 23 )
+texture_disabled = ExtResource( 15 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 73.0
+margin_right = 233.0
+margin_bottom = 126.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="numButton4" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 67.0
+margin_bottom = 53.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_disabled = ExtResource( 28 )
+
+[node name="numButton5" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 83.0
+margin_right = 150.0
+margin_bottom = 53.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 22 )
+texture_disabled = ExtResource( 27 )
+
+[node name="numButton6" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 166.0
+margin_right = 233.0
+margin_bottom = 53.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 16 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 146.0
+margin_right = 233.0
+margin_bottom = 199.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="numButton7" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 67.0
+margin_bottom = 53.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 26 )
+texture_disabled = ExtResource( 19 )
+
+[node name="numButton8" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 83.0
+margin_right = 150.0
+margin_bottom = 53.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 29 )
+texture_disabled = ExtResource( 18 )
+
+[node name="numButton9" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 166.0
+margin_right = 233.0
+margin_bottom = 53.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 24 )
+texture_disabled = ExtResource( 12 )
