@@ -131,7 +131,8 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 				usedNums[cur_numButton-1] += 1
 			#set_cell_number(x, y, 0 if n == cur_numButton else cur_numButton)
 			check_cell_numbers()
-			print(usedNums)
+			update_cell_cursor()
+			#print(usedNums)
 			for i in range(9):
 				#var b : bool = usedNums[i] == 9
 				numButtons[i].set_disabled(usedNums[i] == 9)
