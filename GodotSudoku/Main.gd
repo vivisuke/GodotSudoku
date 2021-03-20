@@ -15,6 +15,7 @@ const NUM_OFFSET = 9*2
 
 var cur_numButton = 1
 var badNumCount = 0
+var usedNums = []	# 1～9 の数字を何個使用しているか
 
 func _ready():
 	var name = "MarginContainer/VBoxContainer/HBoxContainer1/numButton1"
@@ -37,9 +38,9 @@ func set_cell_number(x, y, n):		# n: [1, 9], 0 for clear
 	else:
 		$CenterContainer/numTileMap.set_cell(x, y, n-1+NUM_OFFSET)
 func set_quest(q):
-	#usedNums.resize(9)
-	#for i in range(9):
-	#	usedNums[i] = 0
+	usedNums.resize(9)
+	for i in range(9):
+		usedNums[i] = 0
 	var ix = 0
 	for ch in q:
 		if ch != ' ':	# 空白は無視
@@ -47,8 +48,8 @@ func set_quest(q):
 				ch = '0'
 			var n = ch as int
 			#print(n)
-			#if n >= 1 && n <= 9:
-			#	usedNums[n-1] += 1
+			if n >= 1 && n <= 9:
+				usedNums[n-1] += 1
 			set_cell_clue(ix%9, ix/9, n)
 			ix += 1
 func show_cell_cursor(x, y, b):
@@ -62,6 +63,13 @@ func update_cell_cursor():
 			#	$cursorTileMap.set_cell(x, y, -1)	# カーソル非表示
 			#else:
 			#	$cursorTileMap.set_cell(x, y, 0)	# カーソル表示
+func is_solved():
+	if badNumCount != 0:
+		return false;
+	for i in range(9):
+		if usedNums[i] != 9:
+			return false;
+	return true;
 func is_OK(x, y, n):	# 入れた数字に重複が無いかどうかチェック
 	for i in range(9):
 		if i != x && get_cell_number(i, y) == n:
@@ -104,11 +112,18 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 		#var v = $CenterContainer/numTileMap.get_cell(x, y)
 		#print("v = ", v)
 		#$CenterContainer/numTileMap.set_cell(x, y, v+1)
+		var n = get_cell_number(x, y)
 		if is_clue_cell(x,y):
+			cur_numButton = n
+			updateNumButtonCursor()
+			update_cell_cursor()
 			pass
 		else:
-			var n = get_cell_number(x, y)
-			set_cell_number(x, y, 0 if n == cur_numButton else cur_numButton)
+			if n == cur_numButton:
+				set_cell_number(x, y, 0)
+			else:	
+				set_cell_number(x, y, cur_numButton)
+			#set_cell_number(x, y, 0 if n == cur_numButton else cur_numButton)
 			check_cell_numbers()
 	pass
 func _input(event):
@@ -118,16 +133,17 @@ func _input(event):
 		if xy.x >= 0:
 			cell_pressed(xy.x, xy.y)
 	pass
-
-func numButton_pressed(num):
-	cur_numButton = num
-	#print("num ", num, " pressed")
-	var hbc = (num - 1) / 3 + 1
-	var name = str("MarginContainer/VBoxContainer/HBoxContainer", hbc, "/numButton", num)
+func updateNumButtonCursor():
+	var hbc = (cur_numButton - 1) / 3 + 1
+	var name = str("MarginContainer/VBoxContainer/HBoxContainer", hbc, "/numButton", cur_numButton)
 	#print(name)
 	var btn = get_node(name)
 	#print(btn.rect_global_position)
 	$numButtonCursor.rect_position = btn.rect_global_position
+func numButton_pressed(num):
+	cur_numButton = num
+	updateNumButtonCursor()
+	#print("num ", num, " pressed")
 	update_cell_cursor()
 func _on_numButton1_pressed():
 	numButton_pressed(1)
