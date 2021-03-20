@@ -11,6 +11,7 @@ const BOARD_ORG_X = 11.5	# LR_MARGIN
 const BOARD_ORG_Y = 81		# TTLBAR_HEIGHT + TOP_MARGIN
 const BOARD_WIDTH = CELL_WD * 9
 const BOARD_HEIGHT = BOARD_WIDTH
+const NUM_OFFSET = 9*2
 
 var cur_numButton = 1
 
@@ -19,6 +20,13 @@ func _ready():
 	var btn = get_node(name)
 	$numButtonCursor.rect_position = btn.rect_global_position
 	pass # Replace with function body.
+func set_cell_clue(x, y, n):
+	$CenterContainer/numTileMap.set_cell(x, y, n-1)
+func set_cell_num(x, y, n):		# n: [1, 9], 0 for clear
+	if n<=0:
+		$CenterContainer/numTileMap.set_cell(x, y, -1)
+	else:
+		$CenterContainer/numTileMap.set_cell(x, y, n-1+NUM_OFFSET)
 func posToXY(pos):
 	var xy = Vector2(-1, -1)
 	if pos.x >= BOARD_ORG_X && pos.x < BOARD_ORG_X + BOARD_WIDTH:
@@ -32,9 +40,10 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 		#var v = $CenterContainer/cursorTileMap.get_cell(x, y)
 		#print("v = ", v)
 		#$CenterContainer/cursorTileMap.set_cell(x, y, -1 - v)
-		var v = $CenterContainer/numTileMap.get_cell(x, y)
+		#var v = $CenterContainer/numTileMap.get_cell(x, y)
 		#print("v = ", v)
-		$CenterContainer/numTileMap.set_cell(x, y, v+1)
+		#$CenterContainer/numTileMap.set_cell(x, y, v+1)
+		set_cell_num(x, y, cur_numButton)
 	pass
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
