@@ -25,9 +25,9 @@ func posToXY(pos):
 func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 	print("x = ", x, ", y = ", y)
 	if x>=0:
-		var v = $CenterContainer/TileMap.get_cell(x, y)
+		var v = $CenterContainer/cursorTileMap.get_cell(x, y)
 		print("v = ", v)
-		$CenterContainer/TileMap.set_cell(x, y, 1 if v != 1 else 0)
+		$CenterContainer/cursorTileMap.set_cell(x, y, -1 - v)
 	pass
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:

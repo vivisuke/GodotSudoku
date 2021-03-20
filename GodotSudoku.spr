@@ -8,6 +8,6 @@ SPR# 状 P Open Close ver     Type  概要【スポンサー様名】
 0006 ◎ C 03/20 03/20 0.001│ToDo│数字ボタン：pressed, disable 画像設定
 0007 ◎ C 03/20 03/20 0.001│ToDo│セルカーソル用 TileMap 設置
 0008 ◎ C 03/20 03/20 0.001│ToDo│セルカーソル用 TileMap 動作確認
-0009 ● C 03/20            │ToDo│
+0009 ◎ C 03/20 03/20 0.001│ToDo│セルカーソル用 TileMap：タイルマップIDを -1, 0 に
 0010 ● C 03/20            │ToDo│
 0011 ● C 03/20            │ToDo│
