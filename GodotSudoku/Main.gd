@@ -19,6 +19,7 @@ func _ready():
 	var name = "MarginContainer/VBoxContainer/HBoxContainer1/numButton1"
 	var btn = get_node(name)
 	$numButtonCursor.rect_position = btn.rect_global_position
+	set_quest("008010240090320061102805007039452700 670103092 001679380 900706108 780091020 015030600")
 	pass # Replace with function body.
 func is_clue(x, y):
 	var n = $CenterContainer/numTileMap.get_cell(x, y) 
@@ -33,6 +34,22 @@ func set_cell_num(x, y, n):		# n: [1, 9], 0 for clear
 		$CenterContainer/numTileMap.set_cell(x, y, -1)
 	else:
 		$CenterContainer/numTileMap.set_cell(x, y, n-1+NUM_OFFSET)
+func set_quest(q):
+	#usedNums.resize(9)
+	#for i in range(9):
+	#	usedNums[i] = 0
+	var ix = 0
+	for ch in q:
+		if ch != ' ':	# 空白は無視
+			if ch < '1' || ch > '9':
+				ch = '0'
+			var n = ch as int
+			#print(n)
+			#if n >= 1 && n <= 9:
+			#	usedNums[n-1] += 1
+			set_cell_clue(ix%9, ix/9, n)
+			ix += 1
+	
 func posToXY(pos):
 	var xy = Vector2(-1, -1)
 	if pos.x >= BOARD_ORG_X && pos.x < BOARD_ORG_X + BOARD_WIDTH:
