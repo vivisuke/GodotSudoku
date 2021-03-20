@@ -39,3 +39,25 @@ func _input(event):
 		if xy.x >= 0:
 			cell_pressed(xy.x, xy.y)
 	pass
+
+func numButton_pressed(num):
+	print("num ", num, " pressed")
+	pass
+func _on_numButton1_pressed():
+	numButton_pressed(1)
+func _on_numButton2_pressed():
+	numButton_pressed(2)
+func _on_numButton3_pressed():
+	numButton_pressed(3)
+func _on_numButton4_pressed():
+	numButton_pressed(4)
+func _on_numButton5_pressed():
+	numButton_pressed(5)
+func _on_numButton6_pressed():
+	numButton_pressed(6)
+func _on_numButton7_pressed():
+	numButton_pressed(7)
+func _on_numButton8_pressed():
+	numButton_pressed(8)
+func _on_numButton9_pressed():
+	numButton_pressed(9)

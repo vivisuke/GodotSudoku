@@ -754,3 +754,12 @@ margin_bottom = 53.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 24 )
 texture_disabled = ExtResource( 12 )
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton1" to="." method="_on_numButton1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton2" to="." method="_on_numButton2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton3" to="." method="_on_numButton3_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/numButton4" to="." method="_on_numButton4_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/numButton5" to="." method="_on_numButton5_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/numButton6" to="." method="_on_numButton6_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/numButton7" to="." method="_on_numButton7_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/numButton8" to="." method="_on_numButton8_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/numButton9" to="." method="_on_numButton9_pressed"]
