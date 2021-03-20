@@ -16,8 +16,12 @@ const NUM_OFFSET = 9*2
 var cur_numButton = 1
 var badNumCount = 0
 var usedNums = []	# 1～9 の数字を何個使用しているか
+var numButtons = []
 
 func _ready():
+	numButtons.resize(9)
+	for i in range(9):
+		numButtons[i] = numButtonNode(i+1)
 	var name = "MarginContainer/VBoxContainer/HBoxContainer1/numButton1"
 	var btn = get_node(name)
 	$numButtonCursor.rect_position = btn.rect_global_position
@@ -121,10 +125,18 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 		else:
 			if n == cur_numButton:
 				set_cell_number(x, y, 0)
+				usedNums[cur_numButton-1] -= 1
 			else:	
 				set_cell_number(x, y, cur_numButton)
+				usedNums[cur_numButton-1] += 1
 			#set_cell_number(x, y, 0 if n == cur_numButton else cur_numButton)
 			check_cell_numbers()
+			print(usedNums)
+			for i in range(9):
+				#var b : bool = usedNums[i] == 9
+				numButtons[i].set_disabled(usedNums[i] == 9)
+			if is_solved():
+				print("solved")
 	pass
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -133,11 +145,13 @@ func _input(event):
 		if xy.x >= 0:
 			cell_pressed(xy.x, xy.y)
 	pass
-func updateNumButtonCursor():
-	var hbc = (cur_numButton - 1) / 3 + 1
-	var name = str("MarginContainer/VBoxContainer/HBoxContainer", hbc, "/numButton", cur_numButton)
+func numButtonNode(num):
+	var hbc = (num - 1) / 3 + 1
+	var name = str("MarginContainer/VBoxContainer/HBoxContainer", hbc, "/numButton", num)
 	#print(name)
-	var btn = get_node(name)
+	return get_node(name)
+func updateNumButtonCursor():
+	var btn = numButtonNode(cur_numButton)
 	#print(btn.rect_global_position)
 	$numButtonCursor.rect_position = btn.rect_global_position
 func numButton_pressed(num):
