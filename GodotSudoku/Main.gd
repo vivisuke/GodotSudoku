@@ -14,6 +14,7 @@ const BOARD_HEIGHT = BOARD_WIDTH
 const NUM_OFFSET = 9*2
 
 var cur_numButton = 1
+var badNumCount = 0
 
 func _ready():
 	var name = "MarginContainer/VBoxContainer/HBoxContainer1/numButton1"
@@ -22,15 +23,15 @@ func _ready():
 	set_quest("008010240090320061102805007039452700 670103092 001679380 900706108 780091020 015030600")
 	update_cell_cursor()
 	pass # Replace with function body.
-func is_clue(x, y):
+func is_clue_cell(x, y):
 	var n = $CenterContainer/numTileMap.get_cell(x, y) 
 	return n >= 0 && n < NUM_OFFSET
-func get_cell_num(x, y):	# 0 for EMPTY, or [1, 9]
+func get_cell_number(x, y):	# 0 for EMPTY, or [1, 9]
 	var v = $CenterContainer/numTileMap.get_cell(x, y)
 	return 0 if v < 0 else (v % 9) + 1
 func set_cell_clue(x, y, n):
 	$CenterContainer/numTileMap.set_cell(x, y, n-1)
-func set_cell_num(x, y, n):		# n: [1, 9], 0 for clear
+func set_cell_number(x, y, n):		# n: [1, 9], 0 for clear
 	if n<=0:
 		$CenterContainer/numTileMap.set_cell(x, y, -1)
 	else:
@@ -55,12 +56,38 @@ func show_cell_cursor(x, y, b):
 func update_cell_cursor():
 	for y in range(9):
 		for x in range(9):
-			var cn = get_cell_num(x, y)
+			var cn = get_cell_number(x, y)
 			show_cell_cursor(x, y, cur_numButton == cn)
 			#if selected_num == 0 || selected_num != cn:
 			#	$cursorTileMap.set_cell(x, y, -1)	# カーソル非表示
 			#else:
 			#	$cursorTileMap.set_cell(x, y, 0)	# カーソル表示
+func is_OK(x, y, n):	# 入れた数字に重複が無いかどうかチェック
+	for i in range(9):
+		if i != x && get_cell_number(i, y) == n:
+			return false
+		if i != y && get_cell_number(x, i) == n:
+			return false
+		var x0 = x - x % 3
+		var y0 = y - y % 3
+		for v in range(3):
+			for h in range(3):
+				if x != x0 + h && y != y0 + v && get_cell_number(x0+h, y0+v) == n:
+					return false
+	return true
+func check_cell_numbers():
+	badNumCount = 0
+	for y in range(9):
+		for x in range(9):
+			var n = get_cell_number(x, y)
+			if n != 0:
+				if !is_OK(x, y, n):
+					badNumCount += 1
+					n += 9
+				if !is_clue_cell(x, y):
+					set_cell_number(x, y, n)
+				else:
+					set_cell_clue(x, y, n)
 func posToXY(pos):
 	var xy = Vector2(-1, -1)
 	if pos.x >= BOARD_ORG_X && pos.x < BOARD_ORG_X + BOARD_WIDTH:
@@ -77,11 +104,12 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 		#var v = $CenterContainer/numTileMap.get_cell(x, y)
 		#print("v = ", v)
 		#$CenterContainer/numTileMap.set_cell(x, y, v+1)
-		if is_clue(x,y):
+		if is_clue_cell(x,y):
 			pass
 		else:
-			var n = get_cell_num(x, y)
-			set_cell_num(x, y, 0 if n == cur_numButton else cur_numButton)
+			var n = get_cell_number(x, y)
+			set_cell_number(x, y, 0 if n == cur_numButton else cur_numButton)
+			check_cell_numbers()
 	pass
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
