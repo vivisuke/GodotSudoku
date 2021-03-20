@@ -20,6 +20,12 @@ func _ready():
 	var btn = get_node(name)
 	$numButtonCursor.rect_position = btn.rect_global_position
 	pass # Replace with function body.
+func is_clue(x, y):
+	var n = $CenterContainer/numTileMap.get_cell(x, y) 
+	return n >= 0 && n < NUM_OFFSET
+func get_cell_num(x, y):	# 0 for EMPTY, or [1, 9]
+	var v = $CenterContainer/numTileMap.get_cell(x, y)
+	return 0 if v < 0 else (v % 9) + 1
 func set_cell_clue(x, y, n):
 	$CenterContainer/numTileMap.set_cell(x, y, n-1)
 func set_cell_num(x, y, n):		# n: [1, 9], 0 for clear
@@ -43,7 +49,11 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 		#var v = $CenterContainer/numTileMap.get_cell(x, y)
 		#print("v = ", v)
 		#$CenterContainer/numTileMap.set_cell(x, y, v+1)
-		set_cell_num(x, y, cur_numButton)
+		if is_clue(x,y):
+			pass
+		else:
+			var n = get_cell_num(x, y)
+			set_cell_num(x, y, 0 if n == cur_numButton else cur_numButton)
 	pass
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
