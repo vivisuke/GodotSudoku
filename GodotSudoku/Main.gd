@@ -20,6 +20,7 @@ func _ready():
 	var btn = get_node(name)
 	$numButtonCursor.rect_position = btn.rect_global_position
 	set_quest("008010240090320061102805007039452700 670103092 001679380 900706108 780091020 015030600")
+	update_cell_cursor()
 	pass # Replace with function body.
 func is_clue(x, y):
 	var n = $CenterContainer/numTileMap.get_cell(x, y) 
@@ -49,7 +50,17 @@ func set_quest(q):
 			#	usedNums[n-1] += 1
 			set_cell_clue(ix%9, ix/9, n)
 			ix += 1
-	
+func show_cell_cursor(x, y, b):
+	$CenterContainer/cursorTileMap.set_cell(x, y, 0 if b else -1)
+func update_cell_cursor():
+	for y in range(9):
+		for x in range(9):
+			var cn = get_cell_num(x, y)
+			show_cell_cursor(x, y, cur_numButton == cn)
+			#if selected_num == 0 || selected_num != cn:
+			#	$cursorTileMap.set_cell(x, y, -1)	# カーソル非表示
+			#else:
+			#	$cursorTileMap.set_cell(x, y, 0)	# カーソル表示
 func posToXY(pos):
 	var xy = Vector2(-1, -1)
 	if pos.x >= BOARD_ORG_X && pos.x < BOARD_ORG_X + BOARD_WIDTH:
@@ -81,6 +92,7 @@ func _input(event):
 	pass
 
 func numButton_pressed(num):
+	cur_numButton = num
 	#print("num ", num, " pressed")
 	var hbc = (num - 1) / 3 + 1
 	var name = str("MarginContainer/VBoxContainer/HBoxContainer", hbc, "/numButton", num)
@@ -88,7 +100,7 @@ func numButton_pressed(num):
 	var btn = get_node(name)
 	#print(btn.rect_global_position)
 	$numButtonCursor.rect_position = btn.rect_global_position
-	cur_numButton = num
+	update_cell_cursor()
 func _on_numButton1_pressed():
 	numButton_pressed(1)
 func _on_numButton2_pressed():
