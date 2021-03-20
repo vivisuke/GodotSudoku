@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://images/board.png" type="Texture" id=2]
@@ -66,6 +66,7 @@
 [ext_resource path="res://images/red2.png" type="Texture" id=64]
 [ext_resource path="res://images/green8.png" type="Texture" id=65]
 [ext_resource path="res://images/red5.png" type="Texture" id=66]
+[ext_resource path="res://images/numButtonCursor.png" type="Texture" id=67]
 
 [sub_resource type="TileSet" id=1]
 0/name = "numCursor.png 0"
@@ -754,6 +755,15 @@ margin_bottom = 53.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 24 )
 texture_disabled = ExtResource( 12 )
+
+[node name="numButtonCursor" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 67 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton1" to="." method="_on_numButton1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton2" to="." method="_on_numButton2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton3" to="." method="_on_numButton3_pressed"]

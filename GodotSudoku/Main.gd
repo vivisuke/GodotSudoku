@@ -12,8 +12,12 @@ const BOARD_ORG_Y = 81		# TTLBAR_HEIGHT + TOP_MARGIN
 const BOARD_WIDTH = CELL_WD * 9
 const BOARD_HEIGHT = BOARD_WIDTH
 
+var cur_numButton = 1
 
 func _ready():
+	var name = "MarginContainer/VBoxContainer/HBoxContainer1/numButton1"
+	var btn = get_node(name)
+	$numButtonCursor.rect_position = btn.rect_global_position
 	pass # Replace with function body.
 func posToXY(pos):
 	var xy = Vector2(-1, -1)
@@ -41,8 +45,14 @@ func _input(event):
 	pass
 
 func numButton_pressed(num):
-	print("num ", num, " pressed")
-	pass
+	#print("num ", num, " pressed")
+	var hbc = (num - 1) / 3 + 1
+	var name = str("MarginContainer/VBoxContainer/HBoxContainer", hbc, "/numButton", num)
+	#print(name)
+	var btn = get_node(name)
+	#print(btn.rect_global_position)
+	$numButtonCursor.rect_position = btn.rect_global_position
+	cur_numButton = num
 func _on_numButton1_pressed():
 	numButton_pressed(1)
 func _on_numButton2_pressed():
