@@ -12,7 +12,8 @@ func _ready():
 	$CenterContainer2/HBoxContainer1/questButton1.set_quest(Global.quest[0])
 	$CenterContainer2/HBoxContainer1/questButton2.set_quest(Global.quest[1])
 	$CenterContainer2/HBoxContainer1/questButton3.set_quest(Global.quest[2])
-	$CenterContainer2/HBoxContainer1/questButton5.set_quest("003504900096000750040000080000609000600030001000401000080000020054000160007108500")
+	$CenterContainer2/HBoxContainer1/questButton4.set_quest(Global.quest[3])
+	$CenterContainer2/HBoxContainer1/questButton5.set_quest(Global.quest[4])
 	pass # Replace with function body.
 
 func _input(event):
