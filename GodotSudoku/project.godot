@@ -19,6 +19,10 @@ config/name="GodotSudoku"
 run/main_scene="res://LevelScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.tscn"
+
 [display]
 
 window/size/width=500

@@ -25,7 +25,8 @@ func _ready():
 	var name = "MarginContainer/VBoxContainer/HBoxContainer1/numButton1"
 	var btn = get_node(name)
 	$numButtonCursor.rect_position = btn.rect_global_position
-	set_quest("008010240090320061102805007039452700 670103092 001679380 900706108 780091020 015030600")
+	set_quest(Global.quest[Global.qNumber-1])
+	#set_quest("008010240090320061102805007039452700 670103092 001679380 900706108 780091020 015030600")
 	update_cell_cursor()
 	pass # Replace with function body.
 func is_clue_cell(x, y):

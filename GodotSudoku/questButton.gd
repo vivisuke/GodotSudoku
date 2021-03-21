@@ -28,3 +28,7 @@ func _on_questButton_button_down():
 func _on_questButton_button_up():
 	down = false;
 	update()
+
+func set_quest(q):
+	quest = q
+	update()

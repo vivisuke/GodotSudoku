@@ -71,3 +71,8 @@ margin_right = 322.0
 [node name="questButton5" parent="CenterContainer2/HBoxContainer1" instance=ExtResource( 2 )]
 margin_left = 332.0
 margin_right = 405.0
+[connection signal="pressed" from="CenterContainer2/HBoxContainer1/questButton1" to="." method="_on_questButton1_pressed"]
+[connection signal="pressed" from="CenterContainer2/HBoxContainer1/questButton2" to="." method="_on_questButton2_pressed"]
+[connection signal="pressed" from="CenterContainer2/HBoxContainer1/questButton3" to="." method="_on_questButton3_pressed"]
+[connection signal="pressed" from="CenterContainer2/HBoxContainer1/questButton4" to="." method="_on_questButton4_pressed"]
+[connection signal="pressed" from="CenterContainer2/HBoxContainer1/questButton5" to="." method="_on_questButton5_pressed"]
