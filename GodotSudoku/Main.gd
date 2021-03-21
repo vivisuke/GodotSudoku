@@ -178,3 +178,6 @@ func _on_numButton8_pressed():
 	numButton_pressed(8)
 func _on_numButton9_pressed():
 	numButton_pressed(9)
+
+func _on_backButton_pressed():
+	get_tree().change_scene("res://LevelScene.tscn")

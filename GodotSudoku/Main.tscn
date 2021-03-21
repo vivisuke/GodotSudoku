@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://images/board.png" type="Texture" id=2]
@@ -67,6 +67,8 @@
 [ext_resource path="res://images/green8.png" type="Texture" id=65]
 [ext_resource path="res://images/red5.png" type="Texture" id=66]
 [ext_resource path="res://images/numButtonCursor.png" type="Texture" id=67]
+[ext_resource path="res://images/arrow_back_white.png" type="Texture" id=68]
+[ext_resource path="res://images/arrow_back_gray.png" type="Texture" id=69]
 
 [sub_resource type="TileSet" id=1]
 0/name = "numCursor.png 0"
@@ -617,6 +619,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="backButton" type="TextureButton" parent="."]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 68 )
+texture_pressed = ExtResource( 69 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_top = 70.0
 margin_right = 500.0
@@ -757,13 +769,16 @@ texture_pressed = ExtResource( 24 )
 texture_disabled = ExtResource( 12 )
 
 [node name="numButtonCursor" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -152.219
+margin_top = 57.082
+margin_right = -83.2186
+margin_bottom = 112.082
 mouse_filter = 2
 texture = ExtResource( 67 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton1" to="." method="_on_numButton1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton2" to="." method="_on_numButton2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton3" to="." method="_on_numButton3_pressed"]
