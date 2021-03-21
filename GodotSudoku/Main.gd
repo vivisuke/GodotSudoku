@@ -19,6 +19,7 @@ var usedNums = []	# 1～9 の数字を何個使用しているか
 var numButtons = []
 
 func _ready():
+	$TitleLabel.text = "Quest #%d" % Global.qNumber
 	numButtons.resize(9)
 	for i in range(9):
 		numButtons[i] = numButtonNode(i+1)

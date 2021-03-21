@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://images/board.png" type="Texture" id=2]
@@ -69,6 +69,11 @@
 [ext_resource path="res://images/numButtonCursor.png" type="Texture" id=67]
 [ext_resource path="res://images/arrow_back_white.png" type="Texture" id=68]
 [ext_resource path="res://images/arrow_back_gray.png" type="Texture" id=69]
+[ext_resource path="res://Arialn.ttf" type="DynamicFontData" id=70]
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 70 )
 
 [sub_resource type="TileSet" id=1]
 0/name = "numCursor.png 0"
@@ -625,6 +630,20 @@ margin_bottom = 96.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 68 )
 texture_pressed = ExtResource( 69 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_left = 191.273
+margin_top = 5.75682
+margin_right = 298.273
+margin_bottom = 42.7568
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Quest #1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
