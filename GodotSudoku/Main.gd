@@ -128,7 +128,9 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 			if n == cur_numButton:
 				set_cell_number(x, y, 0)
 				usedNums[cur_numButton-1] -= 1
-			else:	
+			else:
+				if n != 0:
+					usedNums[n-1] -= 1
 				set_cell_number(x, y, cur_numButton)
 				usedNums[cur_numButton-1] += 1
 			#set_cell_number(x, y, 0 if n == cur_numButton else cur_numButton)
