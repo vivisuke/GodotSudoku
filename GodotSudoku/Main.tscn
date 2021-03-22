@@ -71,11 +71,11 @@
 [ext_resource path="res://images/arrow_back_gray.png" type="Texture" id=69]
 [ext_resource path="res://Arialn.ttf" type="DynamicFontData" id=70]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 70 )
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="TileSet" id=2]
 0/name = "numCursor.png 0"
 0/texture = ExtResource( 31 )
 0/tex_offset = Vector2( 0, 0 )
@@ -91,7 +91,7 @@ font_data = ExtResource( 70 )
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=3]
 0/name = "bold1.png 0"
 0/texture = ExtResource( 32 )
 0/tex_offset = Vector2( 0, 0 )
@@ -639,7 +639,7 @@ margin_left = 191.273
 margin_top = 5.75682
 margin_right = 298.273
 margin_bottom = 42.7568
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -668,13 +668,13 @@ __meta__ = {
 
 [node name="cursorTileMap" type="TileMap" parent="CenterContainer"]
 position = Vector2( 11, 11 )
-tile_set = SubResource( 1 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 53, 53 )
 format = 1
 
 [node name="numTileMap" type="TileMap" parent="CenterContainer"]
 position = Vector2( 11, 11 )
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 53, 53 )
 format = 1
 

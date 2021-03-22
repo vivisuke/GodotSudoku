@@ -17,6 +17,7 @@ var cur_numButton = 1
 var badNumCount = 0
 var usedNums = []	# 1～9 の数字を何個使用しているか
 var numButtons = []
+var fallingNumber = load("res://fallingNumber.tscn")
 
 func _ready():
 	$TitleLabel.text = "Quest #%d" % Global.qNumber
@@ -128,6 +129,10 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 			if n == cur_numButton:
 				set_cell_number(x, y, 0)
 				usedNums[cur_numButton-1] -= 1
+				var ns = fallingNumber.instance()
+				ns.setup(n)
+				add_child(ns)
+				ns.position = Vector2(BOARD_ORG_X+CELL_WD*(x+0.5), BOARD_ORG_Y+CELL_WD*(y+0.5))
 			else:
 				if n != 0:
 					usedNums[n-1] -= 1
