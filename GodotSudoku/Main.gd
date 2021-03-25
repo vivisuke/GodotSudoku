@@ -15,6 +15,7 @@ const NUM_OFFSET = 9*2
 
 var cur_numButton = 1
 var badNumCount = 0
+var nButtonCmplt = 0	# 9個使用した数字ボタン数
 var usedNums = []	# 1～9 の数字を何個使用しているか
 var numButtons = []
 var fallingNumber = load("res://fallingNumber.tscn")
@@ -143,13 +144,20 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 			check_cell_numbers()
 			update_cell_cursor()
 			#print(usedNums)
+			var nbc = nButtonCmplt
+			nButtonCmplt = 0
 			for i in range(9):
-				#var b : bool = usedNums[i] == 9
-				numButtons[i].set_disabled(usedNums[i] == 9)
+				var b : bool = usedNums[i] == 9
+				if b:
+					nButtonCmplt += 1
+				numButtons[i].set_disabled(b)
+			if nButtonCmplt > nbc:
+				$AudioNumCmplt.play()
+			else:
+				$AudioNumButton.play()
 			if is_solved():
 				print("solved")
 				$AudioSolved.play()
-	$AudioNumButton.play()
 	pass
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:

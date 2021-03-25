@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://images/board.png" type="Texture" id=2]
@@ -73,6 +73,7 @@
 [ext_resource path="res://sounds/ikuzo.ogg" type="AudioStream" id=71]
 [ext_resource path="res://sounds/buttonPushed.ogg" type="AudioStream" id=72]
 [ext_resource path="res://sounds/levelup.ogg" type="AudioStream" id=73]
+[ext_resource path="res://sounds/don.ogg" type="AudioStream" id=74]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -809,6 +810,9 @@ stream = ExtResource( 73 )
 
 [node name="AudioNumButton" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 72 )
+
+[node name="AudioNumCmplt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 74 )
 [connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton1" to="." method="_on_numButton1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton2" to="." method="_on_numButton2_pressed"]
