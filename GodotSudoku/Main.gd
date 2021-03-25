@@ -30,6 +30,7 @@ func _ready():
 	set_quest(Global.quest[Global.qNumber-1])
 	#set_quest("008010240090320061102805007039452700 670103092 001679380 900706108 780091020 015030600")
 	update_cell_cursor()
+	$AudioBegin.play()
 	pass # Replace with function body.
 func is_clue_cell(x, y):
 	var n = $CenterContainer/numTileMap.get_cell(x, y) 

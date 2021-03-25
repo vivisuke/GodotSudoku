@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://images/board.png" type="Texture" id=2]
@@ -70,6 +70,7 @@
 [ext_resource path="res://images/arrow_back_white.png" type="Texture" id=68]
 [ext_resource path="res://images/arrow_back_gray.png" type="Texture" id=69]
 [ext_resource path="res://Arialn.ttf" type="DynamicFontData" id=70]
+[ext_resource path="res://sounds/ikuzo.ogg" type="AudioStream" id=71]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -797,6 +798,9 @@ texture = ExtResource( 67 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioBegin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 71 )
 [connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton1" to="." method="_on_numButton1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton2" to="." method="_on_numButton2_pressed"]
