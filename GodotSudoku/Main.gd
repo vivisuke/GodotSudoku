@@ -170,6 +170,7 @@ func numButton_pressed(num):
 	updateNumButtonCursor()
 	#print("num ", num, " pressed")
 	update_cell_cursor()
+	$AudioNumButton.play()
 func _on_numButton1_pressed():
 	numButton_pressed(1)
 func _on_numButton2_pressed():
