@@ -148,6 +148,7 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 				numButtons[i].set_disabled(usedNums[i] == 9)
 			if is_solved():
 				print("solved")
+	$AudioNumButton.play()
 	pass
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
