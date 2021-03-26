@@ -813,6 +813,11 @@ stream = ExtResource( 72 )
 
 [node name="AudioNumCmplt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 74 )
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+margin_right = 55.0
+margin_bottom = 58.0
+window_title = "警告!"
 [connection signal="pressed" from="backButton" to="." method="_on_backButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton1" to="." method="_on_numButton1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/numButton2" to="." method="_on_numButton2_pressed"]

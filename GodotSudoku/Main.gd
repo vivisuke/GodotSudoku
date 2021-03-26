@@ -158,6 +158,9 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 			if is_solved():
 				print("solved")
 				$AudioSolved.play()
+				$AcceptDialog.window_title = "Congratulations !"
+				$AcceptDialog.dialog_text = "Good Job !, you are great."
+				$AcceptDialog.popup_centered()
 	pass
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
