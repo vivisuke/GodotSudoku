@@ -138,6 +138,10 @@ func cell_pressed(x, y):	# 盤面セルがクリックされた場合
 			else:
 				if n != 0:
 					usedNums[n-1] -= 1
+					var ns = fallingNumber.instance()
+					ns.setup(n)
+					add_child(ns)
+					ns.position = Vector2(BOARD_ORG_X+CELL_WD*(x+0.5), BOARD_ORG_Y+CELL_WD*(y+0.5))
 				set_cell_number(x, y, cur_numButton)
 				usedNums[cur_numButton-1] += 1
 			#set_cell_number(x, y, 0 if n == cur_numButton else cur_numButton)
@@ -178,12 +182,12 @@ func updateNumButtonCursor():
 	var btn = numButtonNode(cur_numButton)
 	#print(btn.rect_global_position)
 	$numButtonCursor.rect_position = btn.rect_global_position
-func numButton_pressed(num):
-	cur_numButton = num
-	updateNumButtonCursor()
+func numButton_pressed(num):	# 数字ボタン押下処理
+	cur_numButton = num			# 現数字ボタン
+	updateNumButtonCursor()		# 数字ボタンカーソル更新
 	#print("num ", num, " pressed")
-	update_cell_cursor()
-	$AudioNumButton.play()
+	update_cell_cursor()		# セルカーソル更新
+	$AudioNumButton.play()		# 効果音
 func _on_numButton1_pressed():
 	numButton_pressed(1)
 func _on_numButton2_pressed():
