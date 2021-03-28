@@ -34,3 +34,7 @@ func _on_questButton4_pressed():
 	to_main(4)
 func _on_questButton5_pressed():
 	to_main(5)
+
+
+func _on_SourceCodeButton_pressed():
+	OS.shell_open("https://github.com/vivisuke/GodotSudoku")
