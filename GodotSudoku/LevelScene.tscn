@@ -64,7 +64,7 @@ margin_bottom = 39.0
 custom_fonts/font = SubResource( 2 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "ver 0.001"
+text = "ver 0.002"
 
 [node name="CenterContainer2" type="CenterContainer" parent="."]
 margin_top = 400.0
@@ -108,12 +108,12 @@ __meta__ = {
 }
 
 [node name="SourceCodeButton" type="Button" parent="CenterContainer4"]
-margin_left = 184.0
+margin_left = 186.0
 margin_top = 32.0
-margin_right = 315.0
+margin_right = 313.0
 margin_bottom = 67.0
 custom_fonts/font = SubResource( 3 )
-text = "Souece Code"
+text = "Source Code"
 __meta__ = {
 "_edit_use_anchors_": false
 }
